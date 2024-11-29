@@ -1,5 +1,6 @@
 import time
 import random
+import hands
 
 #Classe Jogador
 class Jogador:
@@ -86,6 +87,12 @@ class Jogo:
         print("PÔ!")
         time.sleep(0.1)
 
+    def show_results(self, player_choice, computer_choice):
+        left_hands = {"pedra" : hands.LEFT_ROCK, "papel" : hands.LEFT_PAPER, "tesoura" : hands.LEFT_SCISORS}
+        right_hands = {"pedra" : hands.RIGHT_ROCK, "papel" : hands.RIGHT_PAPER, "tesoura" : hands.RIGHT_SCISORS}
+
+        print("\n" + left_hands[player_choice] + right_hands[computer_choice])
+
     #Inicia a função principal do jogo
     def start_game(self):
         print(9*"\n" + self.title)
@@ -96,8 +103,8 @@ class Jogo:
 
         winner = self.get_winner(player_choice, computer_choice)
         self.jokenpo()
+        self.show_results(player_choice, computer_choice)
         self.score_winner(winner)
-        print(f"Você escolheu {player_choice} e o computador escolheu {computer_choice}")
         self.play_again()
 
 
